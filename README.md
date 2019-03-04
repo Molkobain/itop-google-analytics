@@ -31,7 +31,7 @@ Downloading it directly from the *Clone or download* will get you the version un
 ![Extensions folder](https://raw.githubusercontent.com/Molkobain/itop-google-analytics/develop/docs/mga-install.png)
 
 ## Configuration
-No configuration needed.
+Get tracking codes from Google Analytics' website and put them in the tracking_codes parameter (see below).
 
 ### Parameters
 The extension has only 2 configuration parameters:
