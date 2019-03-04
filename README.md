@@ -1,3 +1,5 @@
+👋 [Available on Molkobain I/O](https://www.molkobain.com/product/google-analytics/)
+
 # iTop extension: molkobain-google-analytics
 * [Description](#description)
 * [Compatibility](#compatibility)
