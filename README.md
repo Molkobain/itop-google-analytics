@@ -38,7 +38,7 @@ The extension has only 2 configuration parameters:
   * `enabled`: Enable or disable extension. Possible values are `true`|`false`, default is `true`.
   * `tracking_codes`: Tracking code for each iTop "portal". `backoffice` being the admin. console, `itop-portal` the standard end-user portal. You can add any other end-user portal instance you have by adding `'PORTAL_ID' => 'TRACKING_CODE',` to the list.
 
-Example:
+*Example:*
 ```
 'molkobain-google-analytics' => array (
   'enabled' => true,
