@@ -20,8 +20,9 @@ use Molkobain\iTop\Extension\GoogleAnalytics\Common\Helper\ConfigHelper;
  */
 class PageUIExtension implements iPageUIExtension
 {
-    /**
+	/**
 	 * @inheritdoc
+	 * @throws \CoreException
 	 */
 	public function GetNorthPaneHtml(iTopWebPage $oPage)
 	{
@@ -34,6 +35,12 @@ class PageUIExtension implements iPageUIExtension
 		// Check if tracking code defined
 		$sTrackingCode = ConfigHelper::GetPortalTrackingCode('backoffice');
 		if(empty($sTrackingCode))
+		{
+			return;
+		}
+
+		// Check if user should be tracked
+		if(ConfigHelper::IsTrackedUser() === false)
 		{
 			return;
 		}
