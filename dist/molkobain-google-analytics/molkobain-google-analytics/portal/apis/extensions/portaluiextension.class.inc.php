@@ -22,6 +22,7 @@ class PortalUIExtension extends AbstractPortalUIExtension
 {
 	/**
 	 * @inheritdoc
+	 * @throws \CoreException
 	 */
 	public function GetJSFiles(Application $oApp)
 	{
@@ -53,6 +54,7 @@ class PortalUIExtension extends AbstractPortalUIExtension
 
 	/**
 	 * @inheritdoc
+	 * @throws \CoreException
 	 */
 	public function GetJSInline(Application $oApp)
 	{

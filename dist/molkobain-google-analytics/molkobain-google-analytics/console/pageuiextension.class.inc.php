@@ -20,8 +20,9 @@ use Molkobain\iTop\Extension\GoogleAnalytics\Common\Helper\ConfigHelper;
  */
 class PageUIExtension implements iPageUIExtension
 {
-    /**
+	/**
 	 * @inheritdoc
+	 * @throws \CoreException
 	 */
 	public function GetNorthPaneHtml(iTopWebPage $oPage)
 	{
