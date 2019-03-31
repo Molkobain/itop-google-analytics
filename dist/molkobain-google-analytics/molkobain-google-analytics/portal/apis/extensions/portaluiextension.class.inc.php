@@ -40,6 +40,12 @@ class PortalUIExtension extends AbstractPortalUIExtension
 			return $aJSFiles;
 		}
 
+		// Check if user should be tracked
+		if(ConfigHelper::IsTrackedUser() === false)
+		{
+			return $aJSFiles;
+		}
+
 		$aJSFiles[] = 'https://www.googletagmanager.com/gtag/js?id=' . $sTrackingCode;
 
 		return $aJSFiles;
@@ -65,8 +71,13 @@ class PortalUIExtension extends AbstractPortalUIExtension
 			return $sJSInline;
 		}
 
+		// Check if user should be tracked
+		if(ConfigHelper::IsTrackedUser() === false)
+		{
+			return $sJSInline;
+		}
+
 		$sJSInline .= <<<EOF
-// Molkobain Google Analytics
 window.dataLayer = window.dataLayer || [];
 function gtag(){dataLayer.push(arguments);}
 gtag('js', new Date());

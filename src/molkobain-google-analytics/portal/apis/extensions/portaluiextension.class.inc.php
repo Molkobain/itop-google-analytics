@@ -40,6 +40,12 @@ class PortalUIExtension extends AbstractPortalUIExtension
 			return $aJSFiles;
 		}
 
+		// Check if user should be tracked
+		if(ConfigHelper::IsTrackedUser() === false)
+		{
+			return $aJSFiles;
+		}
+
 		$aJSFiles[] = 'https://www.googletagmanager.com/gtag/js?id=' . $sTrackingCode;
 
 		return $aJSFiles;
@@ -61,6 +67,12 @@ class PortalUIExtension extends AbstractPortalUIExtension
 		// Check if tracking code defined
 		$sTrackingCode = ConfigHelper::GetPortalTrackingCode(PORTAL_ID);
 		if(empty($sTrackingCode))
+		{
+			return $sJSInline;
+		}
+
+		// Check if user should be tracked
+		if(ConfigHelper::IsTrackedUser() === false)
 		{
 			return $sJSInline;
 		}

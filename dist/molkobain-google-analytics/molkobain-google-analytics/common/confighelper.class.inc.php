@@ -9,6 +9,8 @@
 
 namespace Molkobain\iTop\Extension\GoogleAnalytics\Common\Helper;
 
+use User;
+use UserRights;
 use Molkobain\iTop\Extension\HandyFramework\Common\Helper\ConfigHelper as BaseConfighelper;
 
 /**
@@ -22,6 +24,8 @@ class ConfigHelper extends BaseConfighelper
     const SETTING_CONST_FQCN = 'Molkobain\\iTop\\Extension\\GoogleAnalytics\\Common\\Helper\\ConfigHelper';
 
     const DEFAULT_SETTING_TRACKING_CODES = array();
+    const DEFAULT_SETTING_IGNORED_PROFILES = array();
+    const DEFAULT_SETTING_IGNORED_USERS = array();
 
 	/**
 	 * Returns true if $sPortalID has a tracking code defined, false otherwise.
@@ -48,5 +52,45 @@ class ConfigHelper extends BaseConfighelper
 	    $sTrackingCode = (array_key_exists($sPortalID, $aTrackingCodes)) ? trim($aTrackingCodes[$sPortalID]) : null;
 
 	    return (empty($sTrackingCode)) ? null : $sTrackingCode;
+    }
+
+	/**
+	 * Returns true if $oUser should be tracked with GA, false otherwise.
+	 * $oUser isn't tracked if its login or one of its profiles is in the "ignored_users" or "ignored_profiles" configuration parameters.
+	 *
+	 * @param null|\User $oUser
+	 *
+	 * @throws \CoreException
+	 * 
+	 * @return bool
+	 *
+	 * @since 1.1.0
+	 */
+    public static function IsTrackedUser(User $oUser = null)
+    {
+    	if($oUser === null)
+	    {
+	    	$oUser = UserRights::GetUserObject();
+	    }
+
+	    // Check if among ignored users
+	    $sLogin = $oUser->Get('login');
+    	if(in_array($sLogin, static::GetSetting('ignored_users')))
+	    {
+	    	return false;
+	    }
+
+	    // Check if among ignored profiles
+    	$oProfileSet = $oUser->Get('profile_list');
+    	while($oProfile = $oProfileSet->Fetch())
+	    {
+	    	$sProfile = $oProfile->Get('profile');
+	    	if(in_array($sProfile, static::GetSetting('ignored_profiles')))
+		    {
+		    	return false;
+		    }
+	    }
+
+    	return true;
     }
 }

@@ -38,6 +38,12 @@ class PageUIExtension implements iPageUIExtension
 			return;
 		}
 
+		// Check if user should be tracked
+		if(ConfigHelper::IsTrackedUser() === false)
+		{
+			return;
+		}
+
 		$oPage->add_linked_script('https://www.googletagmanager.com/gtag/js?id=' . $sTrackingCode);
 		$oPage->add_ready_script(<<<EOF
 // Molkobain Google Analytics
