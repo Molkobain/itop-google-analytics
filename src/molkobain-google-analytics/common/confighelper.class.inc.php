@@ -26,6 +26,7 @@ class ConfigHelper extends BaseConfighelper
     const DEFAULT_SETTING_TRACKING_CODES = array();
     const DEFAULT_SETTING_IGNORED_PROFILES = array();
     const DEFAULT_SETTING_IGNORED_USERS = array();
+    const DEFAULT_SETTING_IGNORED_IPS = array();
 
 	/**
 	 * Returns true if $sPortalID has a tracking code defined, false otherwise.
@@ -81,14 +82,23 @@ class ConfigHelper extends BaseConfighelper
 	    }
 
 	    // Check if among ignored profiles
+	    $aIgnoredProfiles = static::GetSetting('ignored_profiles');
     	$oProfileSet = $oUser->Get('profile_list');
     	while($oProfile = $oProfileSet->Fetch())
 	    {
 	    	$sProfile = $oProfile->Get('profile');
-	    	if(in_array($sProfile, static::GetSetting('ignored_profiles')))
+	    	if(in_array($sProfile, $aIgnoredProfiles))
 		    {
 		    	return false;
 		    }
+	    }
+
+	    // Check if among ignored IPs
+	    $aIgnoredIPs = static::GetSetting('ignored_ips');
+    	$sIP = $_SERVER['REMOTE_ADDR'];
+    	if(in_array($sIP, $aIgnoredIPs))
+	    {
+	    	return false;
 	    }
 
     	return true;
