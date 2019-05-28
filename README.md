@@ -14,7 +14,7 @@ Features:
 * Works on both the admin. console and end-user portal.
 * Different tracking codes can be set to the admin. console and end-user portal.
 * Supports multi end-user portal setups, just add portal IDs in the configuration file.
-* Option to not track specific users or profiles (eg. administrators).
+* Option to not track specific users, IPs or profiles (eg. administrators).
 
 ## Compatibility
 Compatible with iTop 2.4+
