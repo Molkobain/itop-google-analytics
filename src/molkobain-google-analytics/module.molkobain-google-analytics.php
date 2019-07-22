@@ -14,7 +14,7 @@
 /** @noinspection PhpUnhandledExceptionInspection */
 SetupWebPage::AddModule(
 	__FILE__, // Path to the current file, all other file names are relative to the directory containing this file
-	'molkobain-google-analytics/1.2.0',
+	'molkobain-google-analytics/1.3.0',
 	array(
 		// Identification
 		//
@@ -24,7 +24,8 @@ SetupWebPage::AddModule(
 		// Setup
 		//
 		'dependencies' => array(
-			'molkobain-handy-framework/1.1.1',
+			'molkobain-handy-framework/1.2.4',
+			'molkobain-newsroom-provider/1.0.0',
 		),
 		'mandatory' => false,
 		'visible' => true,
