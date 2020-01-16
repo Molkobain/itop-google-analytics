@@ -11,23 +11,23 @@ namespace Molkobain\iTop\Extension\GoogleAnalytics\Portal\Extension;
 
 use AbstractPortalUIExtension;
 use Molkobain\iTop\Extension\GoogleAnalytics\Common\Helper\ConfigHelper;
-use Symfony\Component\DependencyInjection\Container;
+use Silex\Application;
 
-// Protection for iTop 2.6 and older
-if(!class_exists('Molkobain\\iTop\\Extension\\GoogleAnalytics\\Portal\\Extension\\PortalUIExtensionLegacy'))
+// Protection for iTop 2.3- and iTop 2.7+
+if(class_exists('\AbstractPortalUIExtension') && version_compare(ITOP_VERSION, '2.7', '<') && (ITOP_VERSION !== 'develop'))
 {
 	/**
-	 * Class PortalUIExtension
+	 * Class PortalUIExtensionLegacy
 	 *
 	 * @package Molkobain\iTop\Extension\GoogleAnalytics\Portal\Extension
 	 */
-	class PortalUIExtension extends AbstractPortalUIExtension
+	class PortalUIExtensionLegacy extends AbstractPortalUIExtension
 	{
 		/**
 		 * @inheritdoc
 		 * @throws \CoreException
 		 */
-		public function GetJSFiles(Container $oContainer)
+		public function GetJSFiles(Application $oApp)
 		{
 			$aJSFiles = array();
 
@@ -59,7 +59,7 @@ if(!class_exists('Molkobain\\iTop\\Extension\\GoogleAnalytics\\Portal\\Extension
 		 * @inheritdoc
 		 * @throws \CoreException
 		 */
-		public function GetJSInline(Container $oContainer)
+		public function GetJSInline(Application $oApp)
 		{
 			$sJSInline = '';
 
