@@ -89,20 +89,29 @@ class ConfigHelper
     }
 
 	/**
-	 * @return bool True if the current app. instance is v2.7+
+	 * @return bool True if the current app. instance is an iTop Core v2.7+
 	 * @since 1.7.0
 	 */
 	public static function IsRunningiTop27OrNewer()
 	{
-		return version_compare(ITOP_DESIGN_LATEST_VERSION, '2.7', '>=');
+		return version_compare(ITOP_DESIGN_LATEST_VERSION, '1.7', '>=');
 	}
 
 	/**
-	 * @return bool True if the current app. instance is v3.0+
+	 * @return bool True if the current app. instance is an iTop Core v3.0+
 	 * @since 1.7.0
 	 */
 	public static function IsRunningiTop30OrNewer()
 	{
 		return version_compare(ITOP_DESIGN_LATEST_VERSION, '3.0', '>=');
+	}
+
+	/**
+	 * @return bool True if the current app. instance is an iTop Core v3.1+
+	 * @since 1.9.0
+	 */
+	public static function IsRunningiTop31OrNewer()
+	{
+		return version_compare(ITOP_DESIGN_LATEST_VERSION, '3.1', '>=');
 	}
 }
