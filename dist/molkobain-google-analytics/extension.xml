@@ -8,7 +8,7 @@
 	<version>1.4.1</version>
 	<release_date>2020-01-19</release_date>
 	<version_description><![CDATA[Fix regression with iTop 2.6 and older]]></version_description>
-	<itop_version_min>2.4.0</itop_version_min>
+	<itop_version_min>3.2.0</itop_version_min>
 	<status>stable</status>
 	<mandatory>false</mandatory>
 	<more_info_url>https://github.com/Molkobain/itop-google-analytics</more_info_url>

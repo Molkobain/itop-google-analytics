@@ -50,7 +50,7 @@ class ConfigHelper extends BaseConfighelper
     public static function GetPortalTrackingCode($sPortalID)
     {
 	    $aTrackingCodes = static::GetSetting('tracking_codes');
-	    $sTrackingCode = (array_key_exists($sPortalID, $aTrackingCodes)) ? trim($aTrackingCodes[$sPortalID]) : null;
+	    $sTrackingCode = (array_key_exists($sPortalID, $aTrackingCodes)) ? trim($aTrackingCodes[$sPortalID] ?? '') : null;
 
 	    return (empty($sTrackingCode)) ? null : $sTrackingCode;
     }

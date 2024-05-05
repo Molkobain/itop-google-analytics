@@ -14,7 +14,7 @@
 /** @noinspection PhpUnhandledExceptionInspection */
 SetupWebPage::AddModule(
 	__FILE__, // Path to the current file, all other file names are relative to the directory containing this file
-	'molkobain-google-analytics/1.4.1',
+	'molkobain-google-analytics/1.5.0',
 	array(
 		// Identification
 		//
@@ -33,11 +33,11 @@ SetupWebPage::AddModule(
 		// Components
 		//
 		'datamodel' => array(
-		    'common/confighelper.class.inc.php',
-		    'console/pageuiextension.class.inc.php',
+		    'common/ConfigHelper.php',
+		    'console/BackofficeExtension.php',
 			// Important: Legacy class MUST be loaded before the standard.
-            'portal/apis/extensions/portaluiextensionlegacy.class.inc.php',
-            'portal/apis/extensions/portaluiextension.class.inc.php',
+            'portal/apis/extensions/PortalUIExtensionLegacy.php',
+            'portal/apis/extensions/PortalUIExtension.php',
 		),
 		'webservice' => array(
 
